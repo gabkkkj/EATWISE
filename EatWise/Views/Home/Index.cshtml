@@ -1,0 +1,75 @@
+﻿@using Azure.Core
+@{
+    ViewData["Title"] = "Dieta";
+    var dietaSelecionada = ViewData["DietaSelecionada"]?.ToString();
+}
+
+<div class="container d-flex flex-column">
+    
+    <div class="d-flex">
+        <div class="p-5">
+            <img src="~/img/frutinhas 1.png" style="height:400px; width:420px"/>
+        </div>
+        <div class="d-flex flex-column p-5">
+            <div>
+                <h5>Bem Vindo(a)! a EatWise</h5>
+                <p>
+                    EatWise é uma plataforma que ajuda os usuários a serem mais saudáveis, oferecendo dietas personalizadas e consultas com nutricionistas.
+                    Fácil de usar, conecta pessoas a profissionais qualificados para alcançar metas como emagrecimento, ganho de massa ou melhoria da saúde geral.
+                </p>
+            </div>
+            <h1 class="display-4">Escolha sua dieta</h1>
+            <form method="get" action="">
+                <label for="dieta">Selecione o tipo de dieta:</label>
+                <select id="dieta" name="dieta" onchange="this.form.submit()">
+                    <!option value="">--Selecione--</!option>
+                    <!option value="perda" @(dietaSelecionada == "perda" ? "selected" : "")>Perda de Peso</!option>
+                    <!option value="engordar" @(dietaSelecionada == "engordar" ? "selected" : "")>Ganhar Peso</!option>
+                    <!option value="manutencao" @(dietaSelecionada == "manutencao" ? "selected" : "")>Manutenção</!option>
+                </select>
+            </form>
+        </div>
+    </div>
+    
+    
+
+    @if (!string.IsNullOrEmpty(dietaSelecionada))
+    {
+        <div class="mt-4 w-100 text-end">
+            <h2>Sua Dieta:</h2>
+            @if (dietaSelecionada == "perda")
+            {
+                <p><strong>Dieta para Perda de Peso</strong></p>
+                <ul>
+                    <li>Café da manhã: Ovos mexidos com espinafre e um suco verde.</li>
+                    <li>Lanche da manhã: Uma fruta (como maçã ou pera).</li>
+                    <li>Almoço: Peito de frango grelhado, salada colorida e quinoa.</li>
+                    <li>Lanche da tarde: Iogurte natural com sementes de chia.</li>
+                    <li>Jantar: Sopa de legumes com proteína magra.</li>
+                </ul>
+            }
+            else if (dietaSelecionada == "engordar")
+            {
+                <p><strong>Dieta para Ganhar Peso</strong></p>
+                <ul>
+                    <li>Café da manhã: Panqueca de aveia com pasta de amendoim e uma vitamina de banana com leite integral.</li>
+                    <li>Lanche da manhã: Barra de proteína e castanhas.</li>
+                    <li>Almoço: Arroz integral, feijão, carne vermelha, e vegetais refogados.</li>
+                    <li>Lanche da tarde: Sanduíche natural com abacate e peito de peru.</li>
+                    <li>Jantar: Massa integral com molho de frango e vegetais.</li>
+                </ul>
+            }
+            else if (dietaSelecionada == "manutencao")
+            {
+                <p><strong>Dieta de Manutenção</strong></p>
+                <ul>
+                    <li>Café da manhã: Mingau de aveia com frutas frescas e mel.</li>
+                    <li>Lanche da manhã: Uma fruta e uma fatia de pão integral com ricota.</li>
+                    <li>Almoço: Filé de peixe, purê de batata doce e legumes cozidos.</li>
+                    <li>Lanche da tarde: Vitamina de frutas com whey protein.</li>
+                    <li>Jantar: Salada com grãos, proteínas magras e azeite.</li>
+                </ul>
+            }
+        </div>
+    }
+</div>

@@ -1,0 +1,148 @@
+﻿@model EatWise.Models.Usuario
+
+@{
+    ViewData["Title"] = "Create";
+}
+<style>
+    body {
+        background: linear-gradient(135deg, #4CAF50, #008080)
+    }
+
+    main {
+        background: linear-gradient(135deg, #4CAF50, #008080)
+    }
+</style>
+<div class="container d-flex flex-column justify-content-center align-items-center">
+    <div class="d-flex flex-column text-center justify-content-center align-items-center w-50"
+         style="background-color:#007F50; border:solid; border-width:5px; border-color:#014A30; padding: 20px;">
+        <div><img src="~/img/LOGO.png" style="height:125px; width: 130px" /></div>
+        <hr />
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+            <div class="flex w-100 justify-content-around">
+                <div class="d-flex flex-column">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+                            </svg>
+                        </span>
+                        <input asp-for="Nome" type="text" class="form-control" placeholder="Nome" aria-label="Nome" aria-describedby="basic-addon1">
+                        <span asp-validation-for="Nome" class="text-danger"></span>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-fill" viewBox="0 0 16 16">
+                                <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5h16V4H0V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5" />
+                            </svg>
+                        </span>
+                        <input asp-for="DataNascimento" type="text" class="form-control" placeholder="DataNascimento" aria-label="DataNascimento" aria-describedby="basic-addon1" type="date">
+                        <span asp-validation-for="DataNascimento" class="text-danger"></span>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-at-fill" viewBox="0 0 16 16">
+                                <path d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2zm-2 9.8V4.698l5.803 3.546zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.5 4.5 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586zM16 9.671V4.697l-5.803 3.546.338.208A4.5 4.5 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671" />
+                                <path d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791" />
+                            </svg>
+                        </span>
+                        <input asp-for="Email" type="text" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" type="email">
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-rulers" viewBox="0 0 16 16">
+                                <path d="M1 0a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h5v-1H2v-1h4v-1H4v-1h2v-1H2v-1h4V9H4V8h2V7H2V6h4V2h1v4h1V4h1v2h1V2h1v4h1V4h1v2h1V2h1v4h1V1a1 1 0 0 0-1-1z" />
+                            </svg>
+                        </span>
+                        <input asp-for="Altura" type="number" step="0.01" class="form-control" placeholder="Altura" aria-label="Altura" aria-describedby="basic-addon1" oninput="calculateIMC()">
+                        <span asp-validation-for="Altura" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="d-flex flex-column">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-backpack-fill" viewBox="0 0 16 16">
+                                <path d="M5 13v-3h4v.5a.5.5 0 0 0 1 0V10h1v3z" />
+                                <path d="M6 2v.341C3.67 3.165 2 5.388 2 8v5.5A2.5 2.5 0 0 0 4.5 16h7a2.5 2.5 0 0 0 2.5-2.5V8a6 6 0 0 0-4-5.659V2a2 2 0 1 0-4 0m2-1a1 1 0 0 1 1 1v.083a6 6 0 0 0-2 0V2a1 1 0 0 1 1-1m0 3a4 4 0 0 1 3.96 3.43.5.5 0 1 1-.99.14 3 3 0 0 0-5.94 0 .5.5 0 1 1-.99-.14A4 4 0 0 1 8 4M4.5 9h7a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 .5-.5" />
+                            </svg>
+                        </span>
+                        <input asp-for="Peso" type="number" step="0.01" class="form-control" placeholder="Peso" aria-label="Peso" aria-describedby="basic-addon1" oninput="calculateIMC()">
+                        <span asp-validation-for="Peso" class="text-danger"></span>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-phone-fill" viewBox="0 0 16 16">
+                                <path d="M3 2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zm6 11a1 1 0 1 0-2 0 1 1 0 0 0 2 0" />
+                            </svg>
+                        </span>
+                        <input asp-for="Telefone" type="text" class="form-control" placeholder="Telefone" aria-label="Telefone" aria-describedby="basic-addon1" type="tel">
+                        <span asp-validation-for="Telefone" class="text-danger"></span>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-backpack-fill" viewBox="0 0 16 16">
+                                <path d="M5 13v-3h4v.5a.5.5 0 0 0 1 0V10h1v3z" />
+                                <path d="M6 2v.341C3.67 3.165 2 5.388 2 8v5.5A2.5 2.5 0 0 0 4.5 16h7a2.5 2.5 0 0 0 2.5-2.5V8c0-2.612-1.67-4.835-4-5.659V2h1V1.5a1.5 1.5 0 0 0-3 0V2h1zm-1.5 6.5A.5.5 0 0 1 5 8h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5z" />
+                            </svg>
+                        </span>
+                        <input asp-for="Tipo" type="text" class="form-control" placeholder="Tipo" aria-label="Tipo" aria-describedby="basic-addon1" readonly value="">
+                        <span asp-validation-for="Tipo" class="text-danger"></span>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
+                                <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2" />
+                            </svg>
+                        </span>
+                        <input asp-for="CPF" type="text" class="form-control" placeholder="CPF" aria-label="CPF" aria-describedby="basic-addon1" type="number">
+                        <span asp-validation-for="CPF" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn text-white" style="background-color:#153900" onclick="calcularIMC()" />
+                <a class="btn text-white" asp-controller="Home" asp-action="Index" style="background-color:#153900">Voltar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        function calcularIMC() {
+            const peso = parseFloat(document.querySelector('input[asp-for="Peso"]').value);
+            const altura = parseFloat(document.querySelector('input[asp-for="Altura"]').value);
+            const tipoInput = document.querySelector('input[asp-for="Tipo"]');
+
+            if (peso > 0 && altura > 0) {
+                const imc = peso / (altura * altura);
+
+                let tipo;
+                if (imc < 18.5) {
+                    tipo = "Baixo Peso";
+                } else if (imc >= 18.5 && imc < 24.9) {
+                    tipo = "Normal";
+                } else if (imc >= 25 && imc < 29.9) {
+                    tipo = "Sobrepeso";
+                } else if (imc >= 30 && imc < 34.9) {
+                    tipo = "Obesidade Grau I";
+                } else if (imc >= 35 && imc < 39.9) {
+                    tipo = "Obesidade Grau II";
+                } else {
+                    tipo = "Obesidade Grau III";
+                }
+
+                tipoInput.value = tipo;
+            } else {
+                tipoInput.value = "";
+            }
+        }
+    </script>
+}

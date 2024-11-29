@@ -1,0 +1,41 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item">
+            <div class="d-flex flex-row justify-content-center align-center">
+                <div class="height-100 justify-content-center align-content-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-person-fill text-white" viewBox="0 0 16 16">
+                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+                    </svg>
+                </div>
+
+                <div class="d-flex flex-column">
+                    <div>
+                        <a class="nav-link text-white fw-bold" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Olá, @User.Identity?.Name!</a>
+                    </div>
+
+                    <div class="d-flex flex-row justify-content-around">
+                        <a class="nav-link text-white fw-bold pe-1" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Minha Conta</a>
+                        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                            <button type="submit" class="nav-link btn btn-link text-white fw-bold">Logout</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link text-white fw-bold" asp-area="Identity" asp-page="/Account/Register">Register</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white fw-bold" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        </li>
+    }
+</ul>
